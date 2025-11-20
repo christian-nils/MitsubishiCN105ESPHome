@@ -339,7 +339,7 @@ def to_code(config):
         # Définir le support du dual setpoint via YAML (par défaut: False si absent)
         yaml_dual = supports.get(CONF_DUAL_SETPOINT, False)
         if yaml_dual:
-            cg.add(traits.add_feature_flags(climate.CLIMATE_FEATURE_TARGET_TEMPERATURE_RANGE))
+            cg.add(traits.add_feature_flags(climate.CLIMATE_SUPPORTS_TWO_POINT_TARGET_TEMPERATURE))
         
         # Build fan mode mask (optimized for ESPHome 2025.11.0+)
         # Use add_supported_fan_mode for codegen - it will be converted to mask internally
