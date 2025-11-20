@@ -64,8 +64,7 @@ void CN105Climate::controlDelegate(const esphome::climate::ClimateCall& call) {
     }
 
     // Vérifier si une température est fournie selon les traits
-    bool tempHasValue = (this->traits_.supports_mode(climate::CLIMATE_MODE_HEAT) &&
-                         this->traits_.supports_mode(climate::CLIMATE_MODE_COOL)) ?
+    bool tempHasValue = (this->traits_.get_feature_flags(climate::CLIMATE_REQUIRES_TWO_POINT_TARGET_TEMPERATURE)) ?
         (call.get_target_temperature_low().has_value() || call.get_target_temperature_high().has_value()) :
         call.get_target_temperature().has_value();
 
